@@ -12,6 +12,7 @@ public class DebugExercise3 {
             if (foodType.equals("turnip")) {
                 int newTotal = totalTurnips + numAvailable;
                 totalTurnips = newTotal;
+                // Bug here! When totalTurnips grow beyond the limit, it turns to a negative one.
             }
             in.readLine();
         }

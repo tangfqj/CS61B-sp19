@@ -24,5 +24,8 @@ public class DebugExercise1 {
         int b3 = 4;
         int result3 = divideThenRound(t3, b3);
         System.out.println("round(" + t3 + "/" + b3 + ")=" + result3);
+        // bug here!
+        // It is supposed to print 1 which is the closest integer to 3/4,
+        // however, it prints 0
     }
 }
