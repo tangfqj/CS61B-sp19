@@ -50,7 +50,7 @@ public class NBody {
 				bodies[i].update(dt, xForces[i], yForces[i]);
 			}
 
-			// draw the backgroud picture
+			// draw the background picture
 			StdDraw.picture(0, 0, "images/starfield.jpg");
 
 			// draw all the bodies
