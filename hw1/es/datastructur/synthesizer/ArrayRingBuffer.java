@@ -5,7 +5,7 @@ import java.util.Iterator;
 //TODO: Make sure to add the override tag for all overridden methods
 //TODO: Make sure to make this class implement BoundedQueue<T>
 
-public class ArrayRingBuffer<T>  {
+public class ArrayRingBuffer<T>  extends   AbstractBoundedQueue<T>{
     /* Index for the next dequeue or peek. */
     private int first;
     /* Index for the next enqueue. */
@@ -21,6 +21,11 @@ public class ArrayRingBuffer<T>  {
     public ArrayRingBuffer(int capacity) {
         // TODO: Create new array with capacity elements.
         //       first, last, and fillCount should all be set to 0.
+        rb = (T[]) new Object[capacity];
+        first = 0;
+        last = 0;
+        fillCount = 0;
+        this.capacity = capacity;
     }
 
     /**
@@ -30,7 +35,12 @@ public class ArrayRingBuffer<T>  {
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update
         //       last.
-        return;
+        if(isFull()){
+            throw new RuntimeException("Buffer is already full!");
+        }
+        rb[last] = x;
+        last = (last + 1) % capacity();
+        fillCount++;
     }
 
     /**
@@ -40,7 +50,13 @@ public class ArrayRingBuffer<T>  {
     public T dequeue() {
         // TODO: Dequeue the first item. Don't forget to decrease fillCount and
         //       update first.
-        return null;
+        if(isEmpty()){
+            throw new RuntimeException("Buffer is empty");
+        }
+        T result = rb[first];
+        first = (first + 1) % capacity();
+        fillCount--;
+        return result;
     }
 
     /**
@@ -50,10 +66,9 @@ public class ArrayRingBuffer<T>  {
     public T peek() {
         // TODO: Return the first item. None of your instance variables should
         //       change.
-        return null;
+        return rb[first];
     }
 
     // TODO: When you get to part 4, implement the needed code to support
     //       iteration and equals.
 }
-    // TODO: Remove all comments that say TODO when you're done.
