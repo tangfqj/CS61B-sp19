@@ -1,20 +1,15 @@
 package creatures;
+
+import huglife.*;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.awt.*;
 import java.util.HashMap;
-import java.awt.Color;
-import huglife.Direction;
-import huglife.Action;
-import huglife.Occupant;
-import huglife.Impassible;
-import huglife.Empty;
 
-/** Tests the plip class
- *  @authr FIXME
- */
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class TestPlip {
-
+public class TestClorus {
     @Test
     public void testBasics() {
         Plip p = new Plip(2);
