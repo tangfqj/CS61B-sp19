@@ -246,4 +246,15 @@ public class BST<Key extends Comparable<Key>> {
     private boolean isEmpty() {
         return size() == 0;
     }
+
+    public double averageDepth(){
+        return (double) depthSum(root) / root.size;
+    }
+
+    private int depthSum(Node n){
+        if(n == null){
+            return 0;
+        }
+        return depthSum(n.left) + depthSum(n.right) + n.size - 1;
+    }
 }

@@ -15,7 +15,15 @@ public class ExperimentHelper {
      *  N = 8, OIPL: 13
      */
     public static int optimalIPL(int N) {
-        return 0;
+        int i = 0;
+        int pathLengthSum = 0;
+        while(N >= Math.pow(2, i)){
+            pathLengthSum += i * Math.pow(2, i);
+            N -= Math.pow(2, i);
+            i++;
+        }
+        pathLengthSum += N * i;
+        return pathLengthSum;
     }
 
     /** Returns the average depth for nodes in an optimal BST of
@@ -27,6 +35,20 @@ public class ExperimentHelper {
      * @return
      */
     public static double optimalAverageDepth(int N) {
-        return 0;
+        double OAD = (double) optimalIPL(N) / N;
+        return OAD;
     }
+
+//    public static void main(String[] args){
+//        int op1 = optimalIPL(1);
+//        int op2 = optimalIPL(3);
+//        int op3 = optimalIPL(8);
+//        System.out.println(op1);
+//        System.out.println(op2);
+//        System.out.println(op3);
+//        double oad1 = optimalAverageDepth(3);
+//        double oad2 = optimalAverageDepth(8);
+//        System.out.println(oad1);
+//        System.out.println(oad2);
+//    }
 }
